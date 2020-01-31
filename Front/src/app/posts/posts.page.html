@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Posts
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-card *ngFor="let Post of arrayPost" >
+
+  <ion-item>
+
+  <ion-thumbnail slot="end">
+    <ion-icon *ngIf="Post.spoiler" size="large" name="warning" color="danger"></ion-icon>
+  </ion-thumbnail>
+  
+  <ion-card-title>{{ Post.serie }}</ion-card-title>
+
+  </ion-item>
+
+  <ion-item class="conteudo">
+    {{ Post.conteudo }}
+  </ion-item>
+  
+  <ion-item>
+    <ion-icon name="thumbs-up" size="small" (click)="likeOrUnlike(Post)" color="{{ Post.is_liked ? 'primary' : 'grey' }}"></ion-icon>
+    {{ Post.num_likes }}
+    <ion-icon name="thumbs-down" size="small" (click)="likeOrUnlike(Post)" color="{{ Post.is_liked ? 'grey' : 'primary' }}"></ion-icon>
+    {{ Post.num_dislikes }}
+
+    <ion-thumbnail slot="end">
+      by {{ Post.nome_usuario }}
+    </ion-thumbnail>
+  </ion-item>
+</ion-card>
+</ion-content>
